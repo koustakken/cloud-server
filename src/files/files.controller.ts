@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseInterceptors, UploadedFile, ParseFilePipe, MaxFileSizeValidator } from '@nestjs/common';
+import { Controller, Post, Body, UseInterceptors, UploadedFile, ParseFilePipe, MaxFileSizeValidator, Get } from '@nestjs/common';
 import { FilesService } from './files.service';
 import { CreateFileDto } from './dto/create-file.dto';
 import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
@@ -11,6 +11,11 @@ import { storage } from './storage'
 @ApiTags('files')
 export class FilesController {
 	constructor(private readonly filesService: FilesService) { }
+
+	@Get()
+	findAll() {
+		return this.filesService.findAll();
+	}
 
 	@Post()
 	// декоратор для работы с файлами
