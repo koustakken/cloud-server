@@ -1,6 +1,11 @@
 import { Column, Entity, PrimaryGeneratedColumn, DeleteDateColumn, ManyToOne } from 'typeorm';
 import { UserEntity } from 'src/users/entities/user.entity';
 
+export enum FileType {
+	PHOTOS = 'photos',
+	TRASH = 'trash',
+}
+
 @Entity('files')
 export class FileEntity {
 	@PrimaryGeneratedColumn()
