@@ -28,7 +28,7 @@ export class AuthService {
 		try {
 			const data = await this.usersService.create(dto);
 			return {
-				token: this.jwtService.sign({ sub: data.id }),
+				token: this.jwtService.sign({ id: data.id }),
 			};
 		} catch (error) {
 			console.log(error);
@@ -38,9 +38,8 @@ export class AuthService {
 
 	// логин
 	async login(user: UserEntity) {
-		const payload = { sub: user.id }
 		return {
-			token: this.jwtService.sign(payload),
+			token: this.jwtService.sign({ id: user.id }),
 		}
 	}
 }

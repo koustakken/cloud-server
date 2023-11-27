@@ -15,7 +15,7 @@ export class AuthController {
 	// настройка swagger
 	@ApiBody({ type: CreateUserDto })
 	async login(@Request() req) {
-		return req.user;
+		return this.authService.login(req.user);
 	}
 
 	@Post('register')
